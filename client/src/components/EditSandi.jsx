@@ -22,7 +22,6 @@ export default function EditSandi({ token }) {
 
       if (result.status !== "success") throw new Error(result.message);
 
-      // Simpan data langsung dalam bentuk objek (berdasarkan kategori/tabel)
       setGroupedItems(result.data);
     } catch (error) {
       alert(error.message || "Gagal mengambil data");
@@ -75,7 +74,7 @@ export default function EditSandi({ token }) {
 
   return (
     <div className="max-w-6xl mx-auto w-full p-4 sm:p-6">
-      <div className="bg-white rounded-2xl border border-card-border shadow-sm overflow-hidden">
+      <div className="bg-primary-light/30 rounded-2xl border border-card-border shadow-sm overflow-hidden">
         {/* Header Tema Cream */}
         <div className="p-5 sm:p-6 border-b border-card-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-card-header">
           <div>
@@ -97,10 +96,10 @@ export default function EditSandi({ token }) {
           ) : (
             Object.entries(groupedItems).map(([category, items]) => (
               <div key={category} className="mb-10 last:mb-0">
-                <h3 className="text-lg font-bold text-card-text capitalize mb-4 pl-3 border-l-4 border-secondary">
+                <h3 className="text-lg font-bold text-card-text capitalize mb-4 pl-3 border-l-4 border-btn-add">
                   Tabel: {category.replace("_", " ")}
                 </h3>
-                <div className="overflow-x-auto border border-card-border rounded-xl shadow-sm">
+                <div className="overflow-x-auto border border-card-border rounded-xl shadow-sm bg-white">
                   <table className="w-full text-left border-collapse whitespace-nowrap">
                     <thead>
                       <tr className="bg-card-header text-xs font-semibold text-card-muted uppercase tracking-wider border-b border-card-border">
@@ -119,7 +118,7 @@ export default function EditSandi({ token }) {
                         return (
                           <tr
                             key={uniqueId}
-                            className="hover:bg-primary-light/40 transition-colors"
+                            className="hover:bg-primary-light/50 transition-colors"
                           >
                             <td className="px-6 py-4 font-medium text-card-muted text-center">
                               {index + 1}
@@ -140,7 +139,7 @@ export default function EditSandi({ token }) {
                                       username: e.target.value,
                                     })
                                   }
-                                  className="w-full min-w-32 px-3 py-1.5 bg-white border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
+                                  className="w-full min-w-32 px-3 py-1.5 bg-white border border-card-border rounded-lg text-sm text-card-text focus:outline-none focus:ring-2 focus:ring-btn-add focus:border-btn-add transition-all"
                                   placeholder="Username baru"
                                 />
                               ) : (
@@ -161,7 +160,7 @@ export default function EditSandi({ token }) {
                                       password: e.target.value,
                                     })
                                   }
-                                  className="w-full min-w-32 px-3 py-1.5 bg-white border border-card-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
+                                  className="w-full min-w-32 px-3 py-1.5 bg-white border border-card-border rounded-lg text-sm text-card-text focus:outline-none focus:ring-2 focus:ring-btn-add focus:border-btn-add transition-all"
                                   placeholder="Password baru"
                                 />
                               ) : (
@@ -177,7 +176,8 @@ export default function EditSandi({ token }) {
                                   <button
                                     type="button"
                                     onClick={() => setEditingId(null)}
-                                    className="p-2 text-card-muted bg-secondary-light hover:bg-card-border rounded-lg transition-colors focus:outline-none"
+                                    className="p-2 text-danger bg-danger-light hover:bg-danger hover:text-white rounded-lg transition-colors focus:outline-none"
+                                    title="Batal"
                                   >
                                     <FaTimes className="w-4 h-4" />
                                   </button>
@@ -185,6 +185,7 @@ export default function EditSandi({ token }) {
                                     type="button"
                                     onClick={() => handleSave(category, item)}
                                     className="p-2 text-white bg-success hover:bg-success-dark rounded-lg transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-success-light focus:ring-offset-1"
+                                    title="Simpan"
                                   >
                                     <FaSave className="w-4 h-4" />
                                   </button>
@@ -196,7 +197,8 @@ export default function EditSandi({ token }) {
                                     onClick={() =>
                                       handleEditClick(category, item)
                                     }
-                                    className="p-2 text-secondary bg-secondary-light hover:bg-primary-light hover:text-secondary-dark rounded-lg transition-all focus:outline-none"
+                                    className="p-2 text-secondary bg-secondary-light hover:bg-btn-add hover:text-white rounded-lg transition-all focus:outline-none"
+                                    title="Edit"
                                   >
                                     <FaEdit className="w-4 h-4" />
                                   </button>
