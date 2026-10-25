@@ -37,11 +37,11 @@ export default function CardItem({
 [&_li]:mb-1 
 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mb-3 
 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mb-2 
-[&_p]:mb-0
+[&_p]:mb-2
 [&_strong]:font-bold [&_em]:italic [&_u]:underline [&_s]:line-through
 [&_.ql-align-center]:text-center [&_.ql-align-right]:text-right [&_.ql-align-justify]:text-justify
+[&_.ql-indent-1]:pl-6 [&_.ql-indent-2]:pl-12 [&_.ql-indent-3]:pl-18
 ${!isExpanded ? "line-clamp-3" : ""}`}
-            dangerouslySetInnerHTML={{ __html: content }}
           />
 
           {!isExpanded && isTruncated && (
