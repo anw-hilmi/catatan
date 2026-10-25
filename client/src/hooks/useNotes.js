@@ -100,29 +100,31 @@ export const useNotes = (category) => {
       })
       .join("");
 
-    const htmlString = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <style>
-          body { font-family: sans-serif; color: #57534e; font-size: 11pt; }
-          h1 { font-size: 16pt; font-weight: bold; margin-bottom: 10px; }
-          h2 { font-size: 14pt; font-weight: bold; margin-bottom: 10px; }
-          p { margin: 0; }
-          ul { margin: 0 0 10px 20px; list-style-type: disc; }
-          ol { margin: 0 0 10px 20px; list-style-type: decimal; }
-          li { margin-bottom: 5px; }
-          .ql-align-center { text-align: center; }
-          .ql-align-right { text-align: right; }
-          .ql-align-justify { text-align: justify; }
-          s { text-decoration: line-through; }
-          u { text-decoration: underline; }
-        </style>
-      </head>
-      <body>${contentHTML}</body>
-    </html>
-  `;
+    const htmlString = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: sans-serif; color: #57534e; font-size: 11pt; line-height: 1.5; margin: 0; padding: 16px; }
+      h1 { font-size: 16pt; font-weight: bold; margin-bottom: 10px; }
+      h2 { font-size: 14pt; font-weight: bold; margin-bottom: 10px; }
+      p { margin: 0 0 8px 0; }
+      ul, ol { margin: 0 0 10px 20px; padding: 0; }
+      ul { list-style-type: disc; }
+      ol { list-style-type: decimal; }
+      li { margin-bottom: 4px; }
+      .ql-align-center { text-align: center; }
+      .ql-align-right { text-align: right; }
+      .ql-align-justify { text-align: justify; }
+      .ql-indent-1 { padding-left: 3em; }
+      .ql-indent-2 { padding-left: 6em; }
+      .ql-indent-3 { padding-left: 9em; }
+      s { text-decoration: line-through; }
+      u { text-decoration: underline; }
+    </style>
+  </head>
+  <body>${contentHTML}</body>
+</html>`;
 
     const converted = await asBlob(htmlString);
     saveAs(converted, `Catatan_${category}.docx`);
