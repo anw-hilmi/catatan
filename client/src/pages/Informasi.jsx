@@ -4,13 +4,13 @@ export default function Informasi() {
   const tutorials = [
     {
       id: 1,
-      title: "Cara Menambah, Mengedit, dan Menghapus Catatan",
-      videoUrl: "https://www.youtube.com/embed/WcH6aR6ehDc",
+      title: "Cara Membuat, Mengedit, dan Menghapus Catatan",
+      videoUrl: "https://www.youtube.com/embed/VaCqmyw87wI",
     },
     {
       id: 2,
-      title: "Cara Mengganti Password",
-      videoUrl: "https://www.youtube.com/embed/Outi8EXrBzw",
+      title: "Cara Mengedit dan Melihat Username dan Password",
+      videoUrl: "https://www.youtube.com/embed/GDyOX060YJg",
     },
   ];
 
