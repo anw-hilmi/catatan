@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import "quill/dist/quill.snow.css";
 
 export default function CardItem({
   title = "",
@@ -17,7 +18,7 @@ export default function CardItem({
     if (el) {
       setIsTruncated(el.scrollHeight > el.clientHeight);
     }
-  }, [content]);
+  }, [content, isExpanded]);
 
   return (
     <div className="flex flex-col bg-white border border-card-border shadow-sm hover:shadow-md rounded-2xl w-full h-full transition-all duration-300 group overflow-hidden">
@@ -31,17 +32,9 @@ export default function CardItem({
         <div className="relative flex-grow">
           <div
             ref={contentRef}
-            className={`text-sm sm:text-base text-card-muted leading-relaxed break-words transition-all duration-300 
-[&_ul]:list-disc [&_ul]:list-outside [&_ul]:pl-8 [&_ul]:my-2 
-[&_ol]:list-decimal [&_ol]:list-outside [&_ol]:pl-8 [&_ol]:my-2 
-[&_li]:mb-1 [&_li]:pl-1 
-[&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mb-3 
-[&_h2]:text-xl [&_h2]:font-bold [&_h2]:mb-2 
-[&_p]:mb-2
-[&_strong]:font-bold [&_em]:italic [&_u]:underline [&_s]:line-through
-[&_.ql-align-center]:text-center [&_.ql-align-right]:text-right [&_.ql-align-justify]:text-justify
-[&_.ql-indent-1]:pl-8 [&_.ql-indent-2]:pl-16 [&_.ql-indent-3]:pl-24
-${!isExpanded ? "line-clamp-3" : ""}`}
+            className={`ql-editor !p-0 text-sm sm:text-base text-card-muted break-words transition-all duration-300 ${
+              !isExpanded ? "line-clamp-3" : ""
+            }`}
             dangerouslySetInnerHTML={{ __html: content }}
           />
 

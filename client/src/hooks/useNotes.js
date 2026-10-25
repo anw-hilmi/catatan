@@ -91,10 +91,10 @@ export const useNotes = (category) => {
           : "-";
         return `
         <div style="margin-bottom: 30px;">
-          <h2 style="margin: 0 0 5px 0; color: #44403c;">${n.title}</h2>
-          <p style="margin: 0 0 15px 0; font-size: 12px; color: #78716c;"><strong>Tanggal:</strong> ${date}</p>
+          <h2 style="margin: 0 0 5px 0; color: #44403c; font-size: 16pt;">${n.title || "Tanpa Judul"}</h2>
+          <p style="margin: 0 0 15px 0; font-size: 10pt; color: #78716c;"><strong>Tanggal:</strong> ${date}</p>
           <div style="color: #57534e; line-height: 1.6;">${n.body || n.content || ""}</div>
-          <hr style="margin-top: 20px; border: 1px solid #e7e5e4;"/>
+          <hr style="margin-top: 20px; border: none; border-top: 1px solid #e7e5e4;"/>
         </div>
       `;
       })
@@ -105,22 +105,28 @@ export const useNotes = (category) => {
   <head>
     <meta charset="utf-8">
     <style>
-      body { font-family: sans-serif; color: #57534e; font-size: 11pt; line-height: 1.5; margin: 0; padding: 16px; }
-      h1 { font-size: 16pt; font-weight: bold; margin-bottom: 10px; }
+      body { font-family: Calibri, Arial, sans-serif; color: #57534e; font-size: 11pt; line-height: 1.5; margin: 0; padding: 16px; }
+      h1 { font-size: 18pt; font-weight: bold; margin-bottom: 10px; }
       h2 { font-size: 14pt; font-weight: bold; margin-bottom: 10px; }
       p { margin: 0 0 8px 0; }
-      ul, ol { margin: 0 0 10px 20px; padding: 0; }
+      ul, ol { margin: 0 0 10px 0; padding-left: 24px; }
       ul { list-style-type: disc; }
       ol { list-style-type: decimal; }
       li { margin-bottom: 4px; }
+      
+      /* Menggunakan margin-left agar indentasi Quill terbaca di MS Word */
+      .ql-indent-1 { margin-left: 30px !important; }
+      .ql-indent-2 { margin-left: 60px !important; }
+      .ql-indent-3 { margin-left: 90px !important; }
+      .ql-indent-4 { margin-left: 120px !important; }
+      
       .ql-align-center { text-align: center; }
       .ql-align-right { text-align: right; }
       .ql-align-justify { text-align: justify; }
-      .ql-indent-1 { padding-left: 3em; }
-      .ql-indent-2 { padding-left: 6em; }
-      .ql-indent-3 { padding-left: 9em; }
-      s { text-decoration: line-through; }
+      
+      s, strike { text-decoration: line-through; }
       u { text-decoration: underline; }
+      blockquote { margin: 10px 0; padding-left: 10px; border-left: 3px solid #ccc; color: #666; }
     </style>
   </head>
   <body>${contentHTML}</body>
