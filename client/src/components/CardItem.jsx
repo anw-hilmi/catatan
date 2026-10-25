@@ -42,6 +42,7 @@ export default function CardItem({
 [&_.ql-align-center]:text-center [&_.ql-align-right]:text-right [&_.ql-align-justify]:text-justify
 [&_.ql-indent-1]:pl-6 [&_.ql-indent-2]:pl-12 [&_.ql-indent-3]:pl-18
 ${!isExpanded ? "line-clamp-3" : ""}`}
+            dangerouslySetInnerHTML={{ __html: content }}
           />
 
           {!isExpanded && isTruncated && (
