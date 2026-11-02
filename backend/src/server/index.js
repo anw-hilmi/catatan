@@ -6,7 +6,14 @@ import errorMiddleware from "../middlewares/errorMiddleware.js";
 const createServer = () => {
   const app = express();
 
-  app.use(cors());
+  const corsOptions = {
+    origin: "http://localhost:5173", // Ganti dengan URL frontend React Anda
+
+    // Jika URL lebih dari satu (misal untuk local dan production), gunakan array:
+    // origin: ['http://localhost:5173', 'https://kua-z.vercel.app'],
+  };
+
+  app.use(cors(corsOptions));
   app.use(express.json());
 
   app.get("/", (req, res) => {

@@ -63,6 +63,7 @@ export const useNoteActions = ({
     setExpandedId,
     isEditorOpen,
     isLoginOpen,
+    actionConfig,
     actionType: actionConfig.type,
     editingItem: actionConfig.payload,
     handleStartAdd,
