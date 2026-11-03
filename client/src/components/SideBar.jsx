@@ -1,6 +1,9 @@
 // src/components/Layout.jsx
+
 import { useState } from "react";
+
 import { NavLink, useLocation, Outlet } from "react-router-dom";
+
 import {
   FaGavel,
   FaClipboardList,
@@ -15,19 +18,27 @@ import {
 
 const NAV_ITEMS = [
   { title: "Peraturan", icon: FaGavel, href: "/peraturan" },
+
   { title: "Tugas Utama", icon: FaClipboardList, href: "/tugas-utama" },
+
   { title: "Tugas Harian", icon: FaCalendarDay, href: "/tugas-harian" },
+
   { title: "Acara", icon: FaCalendarAlt, href: "/acara" },
+
   { title: "Doa", icon: FaPrayingHands, href: "/doa" },
+
   { title: "Admin", icon: FaUserShield, href: "/admin" },
+
   { title: "Informasi", icon: FaInfoCircle, href: "/informasi" },
 ];
 
 export default function SideBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const location = useLocation();
 
   const activeItem = NAV_ITEMS.find((item) => item.href === location.pathname);
+
   const activeTab = activeItem ? activeItem.title : "Peraturan";
 
   return (
@@ -48,10 +59,12 @@ export default function SideBar() {
                 <FaBars className="w-6 h-6" />
               )}
             </button>
+
             <h1 className="text-lg font-bold text-card-text tracking-wide">
               {activeTab}
             </h1>
           </div>
+
           <img
             className="w-8 h-8 rounded-full border border-card-border shadow-sm"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXmYthElFqHmpxT7RhCBFTlvc_jZennHVMm1BmkfWxWw&s"
@@ -78,6 +91,7 @@ export default function SideBar() {
           <ul className="space-y-2 font-medium">
             {NAV_ITEMS.map((item) => {
               const IconComponent = item.icon;
+
               return (
                 <li key={item.href}>
                   <NavLink
@@ -100,6 +114,7 @@ export default function SideBar() {
                               : "text-card-muted group-hover:text-secondary"
                           }`}
                         />
+
                         <span className="ms-3">{item.title}</span>
                       </>
                     )}

@@ -69,7 +69,7 @@ export default function NotePage({ category }) {
         </div>
       )}
 
-      <div className="fixed bottom-6 right-6 z-50 flex gap-3">
+      <div className="fixed bottom-6 right-6 flex gap-3">
         <DownloadButton onClick={downloadAllNotes} />
         <AddButton onClick={handleStartAdd} />
       </div>
