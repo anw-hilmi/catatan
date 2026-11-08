@@ -7,10 +7,7 @@ const createServer = () => {
   const app = express();
 
   const corsOptions = {
-    origin: "http://localhost:5173", // Ganti dengan URL frontend React Anda
-
-    // Jika URL lebih dari satu (misal untuk local dan production), gunakan array:
-    // origin: ['http://localhost:5173', 'https://kua-z.vercel.app'],
+    origin: ["http://localhost:5173", "https://catatann-six.vercel.app"],
   };
 
   app.use(cors(corsOptions));
