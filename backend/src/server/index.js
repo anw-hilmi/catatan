@@ -6,8 +6,12 @@ import errorMiddleware from "../middlewares/errorMiddleware.js";
 const createServer = () => {
   const app = express();
 
+  const allowedOrigins = process.env.CLIENT_URL
+    ? process.env.CLIENT_URL.split(",")
+    : [];
+
   const corsOptions = {
-    origin: ["http://localhost:5173", "https://catatann-six.vercel.app"],
+    origin: allowedOrigins,
   };
 
   app.use(cors(corsOptions));
